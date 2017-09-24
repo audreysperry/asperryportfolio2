@@ -1,0 +1,18 @@
+nav .change-name-color {
+    color: #ffffff !important;
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+header.masthead {
+    background-image: url(../img/Death_to_Stock_Equinox_9.jpg) !important;
+ }
+
+#portfolio-img {
+    border: 2px solid black !important;
+}
+
+.portfolio-prof-pic {
+    width: auto !important;
+    height: auto !important;
+}
+
