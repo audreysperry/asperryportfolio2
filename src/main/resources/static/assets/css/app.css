@@ -1,17 +1,27 @@
 nav .change-name-color {
     color: #ffffff !important;
-    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 }
 
 header.masthead {
     background-image: url(../img/Death_to_Stock_Equinox_9.jpg) !important;
  }
 
-#portfolio-img {
-    border: 2px solid black !important;
+.portfolio-img {
+    border: 2px solid #d6d8d9 !important;
 }
 
 .portfolio-prof-pic {
     width: auto !important;
 }
 
+
+section#contact {
+    background-image: url(../img/Death_to_Stock_Equinox_9.jpg) !important;
+}
+
+
+.text-muted {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+}
