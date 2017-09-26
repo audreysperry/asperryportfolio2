@@ -15,13 +15,25 @@ header.masthead {
     width: auto !important;
 }
 
-
-section#contact {
-    background-image: url(../img/Death_to_Stock_Equinox_9.jpg) !important;
-}
-
-
 .text-muted {
     font-size: 16px !important;
     line-height: 1.6 !important;
 }
+
+
+.contact-info {
+    font-family: inherit !important;
+    font-size: 16px !important;
+    color: #ffffff !important;
+}
+
+.email-link {
+    color: #ffffff !important;
+    text-decoration: none !important;
+
+}
+
+contact-font {
+    font-family: 'Roboto Slab','Helvetica Neue',Helvetica,Arial,sans-serif !important;
+}
+

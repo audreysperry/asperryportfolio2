@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
   <head>
 
@@ -8,7 +8,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>Audrey Sperry</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
@@ -115,7 +115,7 @@
         <div class="row">
           <div class="col-lg-12 text-center">
             <h2 class="section-heading">My Work</h2>
-            <h3 class="section-subheading text-muted">Check out a few of my most recent projects below.</h3>
+            <h3 class="section-subheading text-muted">Check out a few of my recent projects below</h3>
           </div>
         </div>
         <div class="row">
@@ -285,10 +285,10 @@
                 <!--</div>-->
               <!--</li>-->
               <li class="timeline-inverted">
-                <a href="#contact"><div class="timeline-image">
-                  <h4>I would
-                    <br/>love to
-                    <br/>Connect!</h4>
+                <a href="/assets/img/portfolio/asperryresume3.pdf" target="_blank"><div class="timeline-image">
+                  <h4>Click to
+                    <br/>Download
+                    <br/>Resume</h4>
                 </div></a>
 
               </li>
@@ -303,7 +303,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading">About Me</h2>
+            <h2 class="section-heading">About</h2>
             <h3 class="section-subheading text-muted">How I got where I'm going</h3>
           </div>
         </div>
@@ -315,12 +315,12 @@
           </div>
 
           <div class="col-sm-12 col-md-8 ">
-            <p class="large text-muted">Hello. I am a software developer living in the Upstate of SC. After graduating from Connecticut College, I decided to head south for a new adventure. I signed up for a year of nonprofit volunteering through AmeriCorps, packed my bags and moved to Spartanburg, SC. I had every intention of heading back North after completing my year of service but the southeast managed to capture a piece of my heart. I’ve been embracing my southern side ever since.
+            <p class="large text-muted">Hello. I am a software developer living in the Upstate of SC. After graduating from Connecticut College, I decided to head south for a new adventure. I signed up for a year of nonprofit volunteering through AmeriCorps, packed my bags and moved to Spartanburg, SC. I had every intention of heading back North after completing my year of service but the southeast managed to capture a piece of my heart and I’ve been embracing my southern side ever since.
             </p>
-            <p class="large text-muted">After working in the nonprofit sphere for 3 years I joined a nonprofit and community consulting firm in 2015 as a strategy consultant. In the spring of 2016, A colleague and I set out to design a tool to make it easier for out clients to manage the systems that sustain their impact. This incredibily educational, challenging, and rewarding experience opened my eyes to the world of software development.
+            <p class="large text-muted">In the spring of 2016, while working as a strategy consultant for a nonprofit and community consulting form, a colleague and I set out to design a tool to make it easier for out clients to manage the systems that sustain their impact. This incredibily educational, challenging, and rewarding experience opened my eyes to the world of software development.
             </p>
-            <p class="large text-muted">In the summer of 2017 I enrolled at The Iron Yard Greenville, a 12-week coding bootcamp, to jumpstart my software development experience in an immersive, fast-paced environment. I am looking for an opportunity to help a company solve their largest problems with enthusiasm, passion and a sense of humor.</p>
-            <p class="large text-muted">I'd love the chance to talk with you more about my work, my dog, and/or how shocked I am by the speed at which I started using (and loving) the phrase "y'all".</p>
+            <p class="large text-muted">In the summer of 2017 I enrolled at The Iron Yard Greenville, a 12-week coding bootcamp, to jumpstart my software development experience in an immersive, fast-paced environment. I look forward to joining a team where I can help a company solve their largest problems with enthusiasm, passion and a sense of humor.</p>
+            <p class="large text-muted">I'd love the chance to talk with you more about web and software development, dogs, and/or how shocked I am by the speed at which I started using (and loving) the phrase "y'all".</p>
           </div>
         </div>
       </div>
@@ -362,12 +362,15 @@
         <div class="row">
           <div class="col-lg-12 text-center">
             <h2 class="section-heading">Let's Connect</h2>
-            <h3 class="section-subheading text-muted">I look forward to hearing from you.</h3>
+            <h3 class="section-subheading text-muted">I look forward to working with you</h3>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-12">
-
+          <div class="col-lg-12 text-center text-muted contact-info">
+            <i class="fa fa-phone"></i>
+            <span class="contact-font">  860.874.2756</span>
+            <br/>
+            <a class="email-link" href="mailto:audrey.sperry@gmail.com"><i class="fa fa-envelope"></i><span class="contact-font">  audrey.sperry@gmail.com</span></a>
           </div>
         </div>
       </div>
@@ -412,8 +415,8 @@
 
     <!-- Portfolio Modals -->
 
-    <!-- Modal 1 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- TimeLeaf Modals -->
+    <div th:each="myProject : ${myProjects}" class="portfolio-modal modal fade" th:id="${myProject.modalid}" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="close-modal" data-dismiss="modal">
@@ -426,16 +429,14 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2>Gabble</h2>
-                  <p class="item-intro text-muted">A Twitter like app.</p>
-                  <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/gabble1.png" alt=""/>
-                  <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/gabble2.png" alt=""/>
-                  <p>I used node.js, express, and sequelize to create a twitter like app called Gabble. The app uses passport for user authentication and allows users to create, like, update, and delete posts.</p>
+                  <h2 th:text="${myProject.title}"></h2>
+                  <p class="item-intro text-muted" th:text="${myProject.shortdescription}"></p>
+                  <img class="img-fluid d-block mx-auto" th:src="${myProject.imagelink}" alt=""/>
+                  <p th:text="${myProject.longdescription}"></p>
                   <ul class="list-inline">
-                    <li>Summer 2017</li>
-                    <li>Node.js, Express, Sequelize</li>
-                    <li><a href="https://gabble-aps.herokuapp.com" target="_blank">View Live Site</a></li>
-                    <li><a href="https://github.com/audreysperry/gabble" target="_blank">View Source Code</a></li>
+                    <li th:text="${myProject.date}"></li>
+                    <li th:text="${myProject.languages}"></li>
+                    <li><a th:href="${myProject.sourcecode}" target="_blank">View Source Code</a></li>
                   </ul>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fa fa-times"></i>
@@ -448,180 +449,216 @@
       </div>
     </div>
 
-    <!-- Modal 2 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <!-- Project Details Go Here -->
-                  <h2>Song Sampler</h2>
-                  <p class="item-intro text-muted">Sample iTunes songs. </p>
-                  <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/songsampler1.png" alt=""/>
-                  <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/songsampler2.png" alt=""/>
-                  <p>This application allows users to search samples of songs and music videos from iTunes API.</p>
-                  <ul class="list-inline">
-                    <li>Summer 2017</li>
-                    <li>JavaScript</li>
-                    <li><a href="https://audreysperry.github.io/song-sampler/" target="_blank">View Live Site</a></li>
-                    <li><a href="https://github.com/audreysperry/song-sampler" target="_blank">View Source Code</a></li>
-                  </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Project</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--&lt;!&ndash; Modal 1 &ndash;&gt;-->
+    <!--<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">-->
+      <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+          <!--<div class="close-modal" data-dismiss="modal">-->
+            <!--<div class="lr">-->
+              <!--<div class="rl"></div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="container">-->
+            <!--<div class="row">-->
+              <!--<div class="col-lg-8 mx-auto">-->
+                <!--<div class="modal-body">-->
+                  <!--&lt;!&ndash; Project Details Go Here &ndash;&gt;-->
+                  <!--<h2>Gabble</h2>-->
+                  <!--<p class="item-intro text-muted">A Twitter like app.</p>-->
+                  <!--<img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/gabble1.png" alt=""/>-->
+                  <!--<img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/gabble2.png" alt=""/>-->
+                  <!--<p>I used node.js, express, and sequelize to create a twitter like app called Gabble. The app uses passport for user authentication and allows users to create, like, update, and delete posts.</p>-->
+                  <!--<ul class="list-inline">-->
+                    <!--<li>Summer 2017</li>-->
+                    <!--<li>Node.js, Express, Sequelize</li>-->
+                    <!--<li><a href="https://gabble-aps.herokuapp.com" target="_blank">View Live Site</a></li>-->
+                    <!--<li><a href="https://github.com/audreysperry/gabble" target="_blank">View Source Code</a></li>-->
+                  <!--</ul>-->
+                  <!--<button class="btn btn-primary" data-dismiss="modal" type="button">-->
+                    <!--<i class="fa fa-times"></i>-->
+                    <!--Close Project</button>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
-    <!-- Modal 3 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <!-- Project Details Go Here -->
-                  <h2>Project Name</h2>
-                  <p class="item-intro text-muted">Github Profile</p>
-                  <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/githubprofile.png" alt=""/>
-                  <p>I used the Github API to recreate my personal Github repository page. This project utilized Bootstrap and fetch calls to the Github API.</p>
-                  <ul class="list-inline">
-                    <li>Summer 2017</li>
-                    <li>JS, HTML, CSS</li>
-                    <li><a href="https://audreysperry.github.io/4.2-github-profile/" target="_blank">View Live Site</a></li>
-                    <li><a href="https://github.com/audreysperry/4.2-github-profile" target="_blank">View Source Code</a></li>
-                  </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Project</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--&lt;!&ndash; Modal 2 &ndash;&gt;-->
+    <!--<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">-->
+      <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+          <!--<div class="close-modal" data-dismiss="modal">-->
+            <!--<div class="lr">-->
+              <!--<div class="rl"></div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="container">-->
+            <!--<div class="row">-->
+              <!--<div class="col-lg-8 mx-auto">-->
+                <!--<div class="modal-body">-->
+                  <!--&lt;!&ndash; Project Details Go Here &ndash;&gt;-->
+                  <!--<h2>Song Sampler</h2>-->
+                  <!--<p class="item-intro text-muted">Sample iTunes songs. </p>-->
+                  <!--<img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/songsampler1.png" alt=""/>-->
+                  <!--<img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/songsampler2.png" alt=""/>-->
+                  <!--<p>This application allows users to search samples of songs and music videos from iTunes API.</p>-->
+                  <!--<ul class="list-inline">-->
+                    <!--<li>Summer 2017</li>-->
+                    <!--<li>JavaScript</li>-->
+                    <!--<li><a href="https://audreysperry.github.io/song-sampler/" target="_blank">View Live Site</a></li>-->
+                    <!--<li><a href="https://github.com/audreysperry/song-sampler" target="_blank">View Source Code</a></li>-->
+                  <!--</ul>-->
+                  <!--<button class="btn btn-primary" data-dismiss="modal" type="button">-->
+                    <!--<i class="fa fa-times"></i>-->
+                    <!--Close Project</button>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
-    <!-- Modal 4 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <!-- Project Details Go Here -->
-                  <h2>Virtual ATM</h2>
-                  <p class="item-intro text-muted">A virtual atm allowing users to make deposits, withdrawals and get their account balance.</p>
-                  <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/virtualdatabase.jpg.png" alt=""/>
-                  <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/virtualatm.jpg.png" alt=""/>
-                  <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/virtualatm2.jpg.png" alt=""/>
-                  <p>This application allows users to make deposits, and withdrawals (only if the funds are in their account) and calculates their account balance dynamically upon request.</p>
-                  <ul class="list-inline">
-                    <li>Summer 2017</li>
-                    <li>Java</li>
-                    <li><a href="https://github.com/audreysperry/userATM" target="_blank">View Source Code</a></li>
-                  </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Project</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--&lt;!&ndash; Modal 3 &ndash;&gt;-->
+    <!--<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">-->
+      <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+          <!--<div class="close-modal" data-dismiss="modal">-->
+            <!--<div class="lr">-->
+              <!--<div class="rl"></div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="container">-->
+            <!--<div class="row">-->
+              <!--<div class="col-lg-8 mx-auto">-->
+                <!--<div class="modal-body">-->
+                  <!--&lt;!&ndash; Project Details Go Here &ndash;&gt;-->
+                  <!--<h2>GitHub Profile</h2>-->
+                  <!--<p class="item-intro text-muted">Recreation of my GitHub Profile</p>-->
+                  <!--<img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/githubprofile.png" alt=""/>-->
+                  <!--<p>I used the Github API to recreate my personal Github repository page. This project utilized Bootstrap and fetch calls to the Github API.</p>-->
+                  <!--<ul class="list-inline">-->
+                    <!--<li>Summer 2017</li>-->
+                    <!--<li>JS, HTML, CSS</li>-->
+                    <!--<li><a href="https://audreysperry.github.io/4.2-github-profile/" target="_blank">View Live Site</a></li>-->
+                    <!--<li><a href="https://github.com/audreysperry/4.2-github-profile" target="_blank">View Source Code</a></li>-->
+                  <!--</ul>-->
+                  <!--<button class="btn btn-primary" data-dismiss="modal" type="button">-->
+                    <!--<i class="fa fa-times"></i>-->
+                    <!--Close Project</button>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
-    <!-- Modal 5 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <!-- Project Details Go Here -->
-                  <h2>Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/05-full.jpg" alt=""/>
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Southwest</li>
-                    <li>Category: Website Design</li>
-                  </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Project</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--&lt;!&ndash; Modal 4 &ndash;&gt;-->
+    <!--<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">-->
+      <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+          <!--<div class="close-modal" data-dismiss="modal">-->
+            <!--<div class="lr">-->
+              <!--<div class="rl"></div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="container">-->
+            <!--<div class="row">-->
+              <!--<div class="col-lg-8 mx-auto">-->
+                <!--<div class="modal-body">-->
+                  <!--&lt;!&ndash; Project Details Go Here &ndash;&gt;-->
+                  <!--<h2>Virtual ATM</h2>-->
+                  <!--<p class="item-intro text-muted">A virtual atm allowing users to make deposits, withdrawals and get their account balance.</p>-->
+                  <!--<img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/virtualdatabase.jpg.png" alt=""/>-->
+                  <!--<img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/virtualatm.jpg.png" alt=""/>-->
+                  <!--<img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/virtualatm2.jpg.png" alt=""/>-->
+                  <!--<p>This application allows users to make deposits, and withdrawals (only if the funds are in their account) and calculates their account balance dynamically upon request.</p>-->
+                  <!--<ul class="list-inline">-->
+                    <!--<li>Summer 2017</li>-->
+                    <!--<li>Java</li>-->
+                    <!--<li><a href="https://github.com/audreysperry/userATM" target="_blank">View Source Code</a></li>-->
+                  <!--</ul>-->
+                  <!--<button class="btn btn-primary" data-dismiss="modal" type="button">-->
+                    <!--<i class="fa fa-times"></i>-->
+                    <!--Close Project</button>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
-    <!-- Modal 6 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <!-- Project Details Go Here -->
-                  <h2>Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/06-full.jpg" alt=""/>
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Window</li>
-                    <li>Category: Photography</li>
-                  </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Project</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--&lt;!&ndash; Modal 5 &ndash;&gt;-->
+    <!--<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">-->
+      <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+          <!--<div class="close-modal" data-dismiss="modal">-->
+            <!--<div class="lr">-->
+              <!--<div class="rl"></div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="container">-->
+            <!--<div class="row">-->
+              <!--<div class="col-lg-8 mx-auto">-->
+                <!--<div class="modal-body">-->
+                  <!--&lt;!&ndash; Project Details Go Here &ndash;&gt;-->
+                  <!--<h2>Project Name</h2>-->
+                  <!--<p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>-->
+                  <!--<img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/05-full.jpg" alt=""/>-->
+                  <!--<p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>-->
+                  <!--<ul class="list-inline">-->
+                    <!--<li>Date: January 2017</li>-->
+                    <!--<li>Client: Southwest</li>-->
+                    <!--<li>Category: Website Design</li>-->
+                  <!--</ul>-->
+                  <!--<button class="btn btn-primary" data-dismiss="modal" type="button">-->
+                    <!--<i class="fa fa-times"></i>-->
+                    <!--Close Project</button>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash; Modal 6 &ndash;&gt;-->
+    <!--<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">-->
+      <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+          <!--<div class="close-modal" data-dismiss="modal">-->
+            <!--<div class="lr">-->
+              <!--<div class="rl"></div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="container">-->
+            <!--<div class="row">-->
+              <!--<div class="col-lg-8 mx-auto">-->
+                <!--<div class="modal-body">-->
+                  <!--&lt;!&ndash; Project Details Go Here &ndash;&gt;-->
+                  <!--<h2>Project Name</h2>-->
+                  <!--<p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>-->
+                  <!--<img class="img-fluid d-block mx-auto" src="/assets/img/portfolio/06-full.jpg" alt=""/>-->
+                  <!--<p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>-->
+                  <!--<ul class="list-inline">-->
+                    <!--<li>Date: January 2017</li>-->
+                    <!--<li>Client: Window</li>-->
+                    <!--<li>Category: Photography</li>-->
+                  <!--</ul>-->
+                  <!--<button class="btn btn-primary" data-dismiss="modal" type="button">-->
+                    <!--<i class="fa fa-times"></i>-->
+                    <!--Close Project</button>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
     <!-- Bootstrap core JavaScript -->
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
